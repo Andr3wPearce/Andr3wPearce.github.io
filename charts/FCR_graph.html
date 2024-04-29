@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['bar'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Protein Source', 'Feed Conversion Ratio(FCR)(kg feed/kg edible weight)', { role: 'style' }, { role: 'annotation' }],
+                ['Cricket', 2.1, '#b87333', "Insect"],            // RGB value
+                ['Poultry', 4.5, 'silver', "Insect"],            // English color name
+                ['Pork', 9.1, 'gold', "Chicken"],
+                ['Beef', 25, 'color: #e5e4e2', "Cow"], // CSS-style declaration
+            ]);
+
+            var options = {
+                width: 800,
+                chart: {
+                    title: 'Protein Content by Source',
+                },
+                bars: 'horizontal', // Required for Material Bar Charts.
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+
+<body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+</body>
+
+</html>
